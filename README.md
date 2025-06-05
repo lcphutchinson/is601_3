@@ -1,5 +1,5 @@
 ## SU25 IS601-850 Module 2: Automated Testing & Coverage
-![Coverage Badge](https://github.com/lcphutchinson/is601_2/actions/workflows/ci.yml/badge.svg)
+![Coverage Badge](https://github.com/lcphutchinson/is601_3/actions/workflowsci.yml/badge.svg)
 
 A module of Web Systems Development, by Keith Williams
 
