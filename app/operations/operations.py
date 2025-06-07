@@ -1,4 +1,4 @@
-"""Host module for arithmetic operations performed by the Calculator"""
+""" app/operations """
 
 class Operations():
     """Stub Class for hosting static arithmetic methods"""

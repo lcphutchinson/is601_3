@@ -1,17 +1,42 @@
+""" app/calculator """
+
 import sys
 from ..operations.operations import Operations
 
 class Calculator():
+    """
+    Central Interface Object for the Calculator program. Configures and maintains the REPL
+
+    Attributes
+    ----------
+
+    op_dict : dict[str, Callable[str, float, float]]:
+        A mapping of command strings to callable Operations functions
+
+    Methods
+    -------
+
+    run() :
+        Initiates the Calculator REPL
+    """
+
     def __init__(self) -> None:
-        self.op_dict = {
+        """Instantiates the Calculator Object and prints introductory instructions"""
+        self.op_dict: dict[str, Callable[str, float, float]] = {
                 "add"       : Operations.add,
                 "subtract"  : Operations.subtract,
                 "multiply"  : Operations.multiply,
                 "divide"    : Operations.divide
         }
         print("Welcome to Python REPL Calculator, v.1.3")
+        print("Available Commands\
+                \n\tadd <x> <y>\
+                \n\tsubtract <x> <y>\
+                \n\tmultiply <x> <y>\
+                \n\tdivide <x> <y>\n")
 
     def run(self) -> None:
+        """Launches the REPL"""
         while True:
             match input("$: ").lower().strip().split():
                 case ["exit"]:
