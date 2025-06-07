@@ -5,8 +5,9 @@ A module of Web Systems Development, by Keith Williams
 
 <details>
 <summary>
-## 📦 Environment Setup (Verbose)
+📦 Environment Setup (Verbose)
 </summary>
+
 > This setup guide is copied from the original module, [here](github.com/kaw393939/module3_is601)
 
 ---
@@ -166,8 +167,9 @@ python --version
 </details>
 <details>
 <summary>
-## 🛠️ Requirements & Installation
+🛠️ Requirements & Installation
 </summary>
+
 
 Running this project will require:
 
@@ -199,7 +201,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 </details>
+
 ---
+
 ### 🚀 Operation
 
 Launch the calculator with Python:
