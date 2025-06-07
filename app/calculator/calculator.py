@@ -3,39 +3,36 @@ from ..operations.operations import Operations
 
 class Calculator():
     def __init__(self) -> None:
-        print("Welcome to Python REPL Calculator, v.1.2")
+        self.op_dict = {
+                "add"       : Operations.add,
+                "subtract"  : Operations.subtract,
+                "multiply"  : Operations.multiply,
+                "divide"    : Operations.divide
+        }
+        print("Welcome to Python REPL Calculator, v.1.3")
+
     def run(self) -> None:
         while True:
-            user_input = input("$: ").lower().strip()
-            if user_input == "exit":
-                print("Thank you for using Python REPL Calculator. Exiting...")
-                break
-            try:
-                command, x, y = user_input.split()
-            except ValueError:
-                print("Input Error: Expected '<command> <x> <y>'")
-                continue
-            try:
-                x = float(x)
-                y = float(y)
-            except ValueError:
-                print("Input Error: One or more operands not parsable.")
-                continue
-            match command:
-                case 'add':
-                    output = Operations.add(x, y)
-                case 'subtract':
-                    output = Operations.subtract(x, y)
-                case 'multiply':
-                    output = Operations.multiply(x, y)
-                case 'divide':
-                    if y == 0:
-                        print("Input Error: Cannot Divide by Zero")
+            match input("$: ").lower().strip().split():
+                case ["exit"]:
+                    print("Thank you for using Python REPL Calculator. Exiting...")
+                    break
+                case [command, x, y]:
+                    try:
+                        operands = (float(x), float(y))
+                    except ValueError:
+                        print("Error: Operands <x>, <y> must be float-parsable.")
                         continue
-                    output = Operations.divide(x, y)
+                    if command in self.op_dict:
+                        try:
+                            result = self.op_dict[command](operands[0], operands[1])
+                        except ZeroDivisionError:
+                            print("Error: Cannot divide by zero.")
+                            continue
+                        if result.is_integer():
+                            result = int(result)
+                        print(f"Result: {result}")
+                    else:
+                        print(f"Error: No valid command <{command}>.") 
                 case _:
-                    print("Input Error: Invalid Command")
-                    continue
-            if output.is_integer():
-                output = int(output)
-            print(f"Result: {output}")
+                    print("Error: Invalid Command Syntax. Expected <command> <x> <y>.")
